@@ -66,10 +66,166 @@ jobs:
             x86_64-linux-musl,
             x86_64-linux-muslx32,
           ]
+        include:
+          - docker_tag: aarch64-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: aarch64_be-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: arm-linux-musleabi
+            openssl_target: linux-armv4
+
+          - docker_tag: arm-linux-musleabihf
+            openssl_target: linux-armv4
+
+          - docker_tag: armeb-linux-musleabi
+            openssl_target: linux-armv4
+
+          - docker_tag: armeb-linux-musleabihf
+            openssl_target: linux-armv4
+
+          - docker_tag: armel-linux-musleabi
+            openssl_target: linux-armv4
+
+          - docker_tag: armel-linux-musleabihf
+            openssl_target: linux-armv4
+
+          - docker_tag: armv5l-linux-musleabi
+            openssl_target: linux-armv4
+
+          - docker_tag: armv5l-linux-musleabihf
+            openssl_target: linux-armv4
+
+          - docker_tag: armv6-linux-musleabi
+            openssl_target: linux-armv4
+
+          - docker_tag: armv6-linux-musleabihf
+            openssl_target: linux-armv4
+
+          - docker_tag: armv7l-linux-musleabihf
+            openssl_target: linux-armv4
+
+          - docker_tag: armv7m-linux-musleabi
+            openssl_target: linux-armv4
+
+          - docker_tag: armv7r-linux-musleabihf
+            openssl_target: linux-armv4
+
+          - docker_tag: i486-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: i686-linux-musl
+            openssl_target: linux-generic32
+
+          - docker_tag: m68k-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: microblaze-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: microblazeel-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: mips-linux-musl
+            openssl_target: linux-mips64
+
+          - docker_tag: mips-linux-muslsf
+            openssl_target: linux-mips64
+
+          - docker_tag: mips-linux-musln32sf
+            openssl_target: linux-mips32
+
+          - docker_tag: mips64-linux-musl
+            openssl_target: linux-mips64
+
+          - docker_tag: mips64-linux-musln32
+            openssl_target: linux-mips32
+
+          - docker_tag: mips64-linux-musln32sf
+            openssl_target: linux-mips32
+
+          - docker_tag: mips64el-linux-musl
+            openssl_target: linux-mips64
+
+          - docker_tag: mips64el-linux-musln32
+            openssl_target: linux-mips32
+
+          - docker_tag: mips64el-linux-musln32sf
+            openssl_target: linux-mips32
+
+          - docker_tag: mipsel-linux-musl
+            openssl_target: linux-mips64
+
+          - docker_tag: mipsel-linux-musln32
+            openssl_target: linux-mips32
+
+          - docker_tag: mipsel-linux-musln32sf
+            openssl_target: linux-mips32
+
+          - docker_tag: mipsel-linux-muslsf
+            openssl_target: linux-mips64
+
+          - docker_tag: or1k-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: powerpc-linux-musl
+            openssl_target: linux-ppc64
+
+          - docker_tag: powerpc-linux-muslsf
+            openssl_target: linux-ppc64
+
+          - docker_tag: powerpc64-linux-musl
+            openssl_target: linux-ppc64
+
+          - docker_tag: powerpc64le-linux-musl
+            openssl_target: linux-ppc64le
+
+          - docker_tag: powerpcle-linux-musl
+            openssl_target: linux-ppc64le
+
+          - docker_tag: powerpcle-linux-muslsf
+            openssl_target: linux-ppc64le
+
+          - docker_tag: riscv32-linux-musl
+            openssl_target: linux-generic32
+
+          - docker_tag: riscv64-linux-musl
+            openssl_target: linux64-riscv64
+
+          - docker_tag: s390x-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: sh2-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: sh2-linux-muslfdpic
+            openssl_target: linux-generic64
+
+          - docker_tag: sh2eb-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: sh2eb-linux-muslfdpic
+            openssl_target: linux-generic64
+
+          - docker_tag: sh4-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: sh4eb-linux-musl
+            openssl_target: linux-generic64
+
+          - docker_tag: x86_64-linux-musl
+            openssl_target: linux-x86_64
+
+          - docker_tag: x86_64-linux-muslx32
+            openssl_target: linux-x32
 
     name: ${{ matrix.name }} ${{ matrix.docker_tag }}
 
     env:
+      openssl_atomic: "linux-latomic"
+      openssl_generic_32: "linux-generic32"
+      openssl_generic_64: "linux-generic64"
       CXXFLAGS: "--static -static -std=c++17"
       CPPFLAGS: "--static -static"
       LDFLAGS: "--static -static"
@@ -107,7 +263,13 @@ jobs:
           docker exec --env-file env.custom -w /root multiarch apk add autoconf automake bash bash-completion bison build-base ccache cmake coreutils curl findutils flex git graphviz libarchive-tools libcap
           docker exec --env-file env.custom -w /root multiarch apk add libtool linux-headers ncurses-dev openssl-dev openssl-libs-static patch perl pkgconf python3 python3-dev re2c rsync rsync tar texinfo ttf-freefont xz zip
 
-      - name: Docker - Git clone mtr
+      - name: Docker - Git clone openssl
+        run: docker exec --env-file env.custom -w /root multiarch git clone --single-branch --branch "master" --shallow-submodules --recurse-submodules --depth 1 https://github.com/openssl/openssl.git /root/openssl
+
+      - name: Docker - configure openssl
+        run: docker exec --env-file env.custom -w /root/openssl multiarch ./Configure ${{ matrix.openssl_target }} --prefix="/usr/local" --libdir="/usr/local/lib" --openssldir="/etc/ssl" threads no-shared no-dso no-comp
+
+      - name: Docker - Git clone iperf
         run: docker exec --env-file env.custom -w /root multiarch git clone --single-branch --branch "master" --shallow-submodules --recurse-submodules --depth 1 https://github.com/esnet/iperf.git /root/${{ matrix.name }}
 
       - name: Bootstrap ${{ matrix.name }}
