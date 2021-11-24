@@ -197,13 +197,13 @@ jobs:
             openssl_target: linux-generic64
 
           - docker_tag: sh2-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: sh2-linux-muslfdpic
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: sh2eb-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: sh2eb-linux-muslfdpic
             openssl_target: linux-generic64
