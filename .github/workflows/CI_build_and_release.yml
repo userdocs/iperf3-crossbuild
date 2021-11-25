@@ -113,25 +113,25 @@ jobs:
             openssl_target: linux-armv4
 
           - docker_tag: i486-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: i686-linux-musl
             openssl_target: linux-generic32
 
           - docker_tag: m68k-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: microblaze-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: microblazeel-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: mips-linux-musl
-            openssl_target: linux-mips64
+            openssl_target: linux-mips32
 
           - docker_tag: mips-linux-muslsf
-            openssl_target: linux-mips64
+            openssl_target: linux-mips32
 
           - docker_tag: mips-linux-musln32sf
             openssl_target: linux-mips32
@@ -167,13 +167,13 @@ jobs:
             openssl_target: linux-mips64
 
           - docker_tag: or1k-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: powerpc-linux-musl
-            openssl_target: linux-ppc64
+            openssl_target: linux-ppc
 
           - docker_tag: powerpc-linux-muslsf
-            openssl_target: linux-ppc64
+            openssl_target: linux-ppc
 
           - docker_tag: powerpc64-linux-musl
             openssl_target: linux-ppc64
@@ -206,13 +206,13 @@ jobs:
             openssl_target: linux-generic32
 
           - docker_tag: sh2eb-linux-muslfdpic
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: sh4-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: sh4eb-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux-generic32
 
           - docker_tag: x86_64-linux-musl
             openssl_target: linux-x86_64
