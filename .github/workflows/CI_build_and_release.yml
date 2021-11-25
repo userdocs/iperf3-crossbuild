@@ -155,7 +155,7 @@ jobs:
             openssl_target: linux-mips32
 
           - docker_tag: mipsel-linux-musl
-            openssl_target: linux-mips64
+            openssl_target: linux-mips32
 
           - docker_tag: mipsel-linux-musln32
             openssl_target: linux-mips32
@@ -164,7 +164,7 @@ jobs:
             openssl_target: linux-mips32
 
           - docker_tag: mipsel-linux-muslsf
-            openssl_target: linux-mips64
+            openssl_target: linux-mips32
 
           - docker_tag: or1k-linux-musl
             openssl_target: linux-generic32
