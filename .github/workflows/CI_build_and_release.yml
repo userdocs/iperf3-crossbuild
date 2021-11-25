@@ -182,10 +182,10 @@ jobs:
             openssl_target: linux-ppc64le
 
           - docker_tag: powerpcle-linux-musl
-            openssl_target: linux-ppc64le
+            openssl_target: linux-generic32
 
           - docker_tag: powerpcle-linux-muslsf
-            openssl_target: linux-ppc64le
+            openssl_target: linux-generic32
 
           - docker_tag: riscv32-linux-musl
             openssl_target: linux-generic32
