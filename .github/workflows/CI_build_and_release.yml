@@ -137,22 +137,22 @@ jobs:
             openssl_target: linux-mips32
 
           - docker_tag: mips64-linux-musl
-            openssl_target: linux-mips64
+            openssl_target: linux64-mips64
 
           - docker_tag: mips64-linux-musln32
-            openssl_target: linux-mips32
+            openssl_target: linux64-mips64
 
           - docker_tag: mips64-linux-musln32sf
-            openssl_target: linux-mips32
+            openssl_target: linux64-mips64
 
           - docker_tag: mips64el-linux-musl
-            openssl_target: linux-mips64
+            openssl_target: linux64-mips64
 
           - docker_tag: mips64el-linux-musln32
-            openssl_target: linux-mips32
+            openssl_target: linux64-mips64
 
           - docker_tag: mips64el-linux-musln32sf
-            openssl_target: linux-mips32
+            openssl_target: linux64-mips64
 
           - docker_tag: mipsel-linux-musl
             openssl_target: linux-mips32
