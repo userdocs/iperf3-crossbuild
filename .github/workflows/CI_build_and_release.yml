@@ -188,13 +188,13 @@ jobs:
             openssl_target: linux-generic32
 
           - docker_tag: riscv32-linux-musl
-            openssl_target: linux-generic32
+            openssl_target: linux64-riscv64
 
           - docker_tag: riscv64-linux-musl
             openssl_target: linux64-riscv64
 
           - docker_tag: s390x-linux-musl
-            openssl_target: linux-generic64
+            openssl_target: linux64-s390x
 
           - docker_tag: sh2-linux-musl
             openssl_target: linux-generic32
