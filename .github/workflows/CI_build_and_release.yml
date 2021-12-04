@@ -32,8 +32,6 @@ jobs:
             i486-linux-musl,
             i686-linux-musl,
             m68k-linux-musl,
-            microblaze-linux-musl,
-            microblazeel-linux-musl,
             mips-linux-musl,
             mips-linux-muslsf,
             mips-linux-musln32sf,
@@ -119,12 +117,6 @@ jobs:
             openssl_target: linux-generic32
 
           - docker_tag: m68k-linux-musl
-            openssl_target: linux-generic32
-
-          - docker_tag: microblaze-linux-musl
-            openssl_target: linux-generic32
-
-          - docker_tag: microblazeel-linux-musl
             openssl_target: linux-generic32
 
           - docker_tag: mips-linux-musl
